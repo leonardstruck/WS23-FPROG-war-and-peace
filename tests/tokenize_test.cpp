@@ -1,4 +1,5 @@
 #include "doctest.h"
+
 #include "../src/tokenize.hpp"
 
 TEST_CASE("replace punctuation with spaces") {
