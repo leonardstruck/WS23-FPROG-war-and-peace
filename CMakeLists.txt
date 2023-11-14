@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD 20)
 find_package(range-v3)
 
 add_executable(war_and_peace src/main.cpp
-        src/tokenize.hpp)
+        src/tokenize.hpp
+        src/filter.h)
 
 target_link_libraries(war_and_peace range-v3::range-v3)
 
