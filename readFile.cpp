@@ -6,6 +6,7 @@
 
 auto readFile = [](const std::string path) -> std::optional<std::string>
 {
+  try{
   std::ifstream file;
   file.open(path);
 
@@ -17,4 +18,8 @@ auto readFile = [](const std::string path) -> std::optional<std::string>
   buffer << file.rdbuf();
   file.close();
   return buffer.str();
+
+  } catch{
+    return std::nullopt;
+  }
 };
