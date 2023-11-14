@@ -1,8 +1,8 @@
-#include <unordered_set>
-#include <range/v3/all.hpp>
-
 #ifndef WAR_AND_PEACE_FILTER_H
 #define WAR_AND_PEACE_FILTER_H
+
+#include <unordered_set>
+#include <range/v3/all.hpp>
 
 namespace filter {
     // Function to create a set from a list of words for efficient lookup (O(1))
