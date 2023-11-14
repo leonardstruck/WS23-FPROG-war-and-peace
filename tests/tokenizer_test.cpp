@@ -1,5 +1,7 @@
 #include "doctest.h"
-#include "../src/tokenize.hpp"
+#include "../src/tokenizer.cpp"
+
+using namespace tokenizer;
 
 TEST_CASE("replace punctuation with spaces") {
     SUBCASE("Empty String") {
