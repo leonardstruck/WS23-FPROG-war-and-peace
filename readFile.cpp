@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 
 auto readFile = [](const std::string path){
@@ -7,14 +8,8 @@ auto readFile = [](const std::string path){
   std::ifstream file;
   file.open(path);
 
-  // file lesen
-  std::string content = "";
-  while ( file ) {
-    std::string line = "";
-    std::getline (file, line);
-    content += line + '\n';
-  }
+  std::stringstream buffer;
+  buffer << file.rdbuf();
+  return buffer.str();
 
-  // return inhalt als string
-  return content;
 };
