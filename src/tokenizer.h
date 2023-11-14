@@ -1,3 +1,6 @@
+#ifndef WAR_AND_PEACE_TOKENIZE_H
+#define WAR_AND_PEACE_TOKENIZE_H
+
 #include <iostream>
 #include <range/v3/all.hpp>
 #include <cctype> // for std::ispunct
@@ -35,4 +38,7 @@ namespace tokenizer {
         return input | sanitize | split | filter_empty_ranges | to_vector;
     };
 }
+
+#endif //WAR_AND_PEACE_TOKENIZE_H
+
 
