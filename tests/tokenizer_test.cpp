@@ -1,5 +1,5 @@
 #include "doctest.h"
-#include "../src/tokenizer.cpp"
+#include "../src/tokenizer.hpp"
 
 using namespace tokenizer;
 
