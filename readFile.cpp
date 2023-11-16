@@ -19,7 +19,7 @@ auto readFile = [](const std::string path) -> std::optional<std::string>
   file.close();
   return buffer.str();
 
-  } catch{
+  } catch(...){
     return std::nullopt;
   }
 };
