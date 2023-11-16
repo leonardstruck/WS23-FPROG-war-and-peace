@@ -1,7 +1,9 @@
 find_package(range-v3)
 
+set(CMAKE_CXX_STANDARD 11)
+
 add_executable(test test_main.cpp
-    tokenize_test.cpp
+    tokenizer_test.cpp
     counter_test.cpp
     filter_test.cpp
 )
