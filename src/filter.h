@@ -40,6 +40,21 @@ namespace filter {
             return filter_predicate(filter_set, filter_set_pluralized, word);
         }) | ranges::to<std::vector<std::string>>;
     };
+
+    auto positions_of_matches = [](const auto& words, const auto& filter) -> std::vector<int> {
+        const auto& filter_set = create_set(filter);
+        const auto& filter_set_pluralized = create_set_pluralized(filter);
+
+        auto const indices = words | ranges::views::enumerate;
+        auto const filtered_indices = indices | ranges::views::filter([&filter_set, &filter_set_pluralized](const auto& pair) {
+            return filter_predicate(filter_set, filter_set_pluralized, pair.second);
+        }) | ranges::views::transform([](const auto& pair) {
+            // only keep the index
+            return pair.first;
+        }) | ranges::to<std::vector<int>>;
+
+        return filtered_indices;
+    };
 }
 
 #endif //WAR_AND_PEACE_FILTER_H

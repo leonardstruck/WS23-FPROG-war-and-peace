@@ -38,7 +38,7 @@ TEST_CASE("filter_word") {
 }
 
 
-TEST_CASE("Testing filter_words function") {
+TEST_CASE("filter_words") {
     std::vector<std::string> words = {"apple", "bananas", "cherry", "grapes"};
     std::vector<std::string> filter = {"banana", "grape"};
 
@@ -49,4 +49,20 @@ TEST_CASE("Testing filter_words function") {
     CHECK(std::find(filteredWords.begin(), filteredWords.end(), "grapes") != filteredWords.end());
     CHECK(std::find(filteredWords.begin(), filteredWords.end(), "apple") == filteredWords.end());
     CHECK(std::find(filteredWords.begin(), filteredWords.end(), "cherry") == filteredWords.end());
+}
+
+TEST_CASE("positions_of_matches") {
+    std::vector<std::string> words = {"apple", "bananas", "cherry", "grapes"};
+    std::vector<std::string> filter = {"banana", "grape"};
+
+    auto filteredIndices = filter::positions_of_matches(words, filter);
+
+    // Should contain 2 matches
+    CHECK(filteredIndices.size() == 2);
+
+    // Should contain 1 and 3, but not 0 or 2
+    CHECK(std::find(filteredIndices.begin(), filteredIndices.end(), 1) != filteredIndices.end());
+    CHECK(std::find(filteredIndices.begin(), filteredIndices.end(), 3) != filteredIndices.end());
+    CHECK(std::find(filteredIndices.begin(), filteredIndices.end(), 0) == filteredIndices.end());
+    CHECK(std::find(filteredIndices.begin(), filteredIndices.end(), 2) == filteredIndices.end());
 }
