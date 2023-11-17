@@ -6,25 +6,26 @@
 #include <sstream>
 #include <optional>
 
+namespace readFile{
+  auto readFile = [](const std::string path) -> std::optional<std::string>
+  {
+    try{
+      std::ifstream file;
+      file.open(path);
 
-auto readFile = [](const std::string path) -> std::optional<std::string>
-{
-  try{
-  std::ifstream file;
-  file.open(path);
+      if (!file) {
+        return std::nullopt;
+      }
 
-  if (!file) {
-    return std::nullopt;
-  }
+      std::stringstream buffer;
+      buffer << file.rdbuf();
+      file.close();
+      return buffer.str();
 
-  std::stringstream buffer;
-  buffer << file.rdbuf();
-  file.close();
-  return buffer.str();
-
-  } catch(...){
-    return std::nullopt;
-  }
-};
+    } catch(...){
+      return std::nullopt;
+    }
+  };
+}
 
 #endif // READFILE_H
