@@ -1,9 +1,5 @@
-## Installing Project Dependencies
+# Functional Analysis of Literary Themes
 
-### Conan
-Conan is a C/C++ package manager. It is used to install the dependencies of this project. To install Conan, follow the instructions [here](https://docs.conan.io/en/latest/installation.html).
+## Project Overview
 
-To install the dependencies of this project, run the following command in the root directory of the project:
-```
-conan install .
-```
+This C++ project, developed for the Functional Programming course (FPROG), utilizes functional programming concepts to analyze literary texts. The program reads a large text file (e.g., "War and Peace" by Leo Tolstoy) and categorizes its chapters as either war-related or peace-related based on the density of specific terms. This is achieved using two additional text files: one containing war-related terms and another with peace-related terms.
