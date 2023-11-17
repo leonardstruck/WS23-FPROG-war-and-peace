@@ -1,7 +1,7 @@
 find_package(range-v3)
 
 add_executable(test test_main.cpp
-    tokenize_test.cpp
+    tokenizer_test.cpp
     counter_test.cpp
     filter_test.cpp
 )
