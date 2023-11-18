@@ -2,6 +2,9 @@
 #define READANDTOKENIZE_H
 
 #include <iostream>
+#include <vector>
+#include <string>
+#include <range/v3/all.hpp>
 #include "tokenizer.h"
 #include "readFile.h"
 
@@ -11,28 +14,39 @@ namespace readAndTokenize {
     if (argc != 4) {
         return std::nullopt;
     }
-    return std::vector<std::string> args(std::begin(argv), std::end(argv));
+    std::vector<std::string> args(argv, argv + argc);
+    return args;
   };
 
   auto readAndTokenize = [](const std::string path) -> std::optional<std::vector<std::string>> {
-      auto file = readFile(path);
+      auto file = readFile::readFile(path);
       if (!file) {
           return std::nullopt;
       }
       return tokenizer::tokenize(*file);
   };
 
-  auto validateAndTokenize = [](int argc, char* argv[]) {
+  auto validateAndTokenize = [](int argc, char* argv[]) -> std::optional<std::vector<std::vector<std::string>>>{
     auto args = validateArgs(argc, argv);
-    if (!args) {
+    if (!args.has_value()) {
       return std::nullopt;
     }
-    std::transform(args.begin(), args.end(), args.begin(), [](const std::string& arg) -> std::string {
-      auto tokens = readAndTokenize(arg);
-      return tokens ? *tokens : std::nullopt;
-    });
-    return args;
-  }
+    std::vector<std::vector<std::string>> tokens = args.value() | ranges::views::drop(1)
+      | ranges::views::transform([](const std::string& arg) {
+          auto token = readAndTokenize(arg);
+          return token.has_value() ? token.value() : std::vector<std::string>{};
+      })
+      | ranges::views::take_while([](const std::vector<std::string>& token) {
+          return !token.empty();
+      })
+      | ranges::to<std::vector<std::vector<std::string>>>;
+
+    if (tokens.size() < (args.value().size() - 1)) {
+      return std::nullopt;
+    }
+
+    return tokens;
+  };
 }
 
 #endif // READANDTOKENIZE_H
