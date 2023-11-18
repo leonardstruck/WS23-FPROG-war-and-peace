@@ -81,3 +81,5 @@ makefile
 
 .idea
 .vscode
+build
+CMakeFiles
