@@ -59,3 +59,18 @@ TEST_CASE("Count in parallel") {
 
     CHECK_EQ(result, expected);
 }
+
+TEST_CASE("Sum of counts") {
+    auto map = counter::CountMap{
+            {"hello",   3},
+            {"world",   2},
+            {"apples",  2},
+            {"bananas", 1},
+            {"oranges", 9}
+    };
+
+    auto expected = 17;
+
+    auto result = counter::sum_of_counts(map);
+    CHECK_EQ(result, expected);
+}

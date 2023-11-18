@@ -39,6 +39,12 @@ namespace counter {
 
         return result;
     };
+
+    auto sum_of_counts = [](const CountMap& map) {
+        return ranges::accumulate(map, 0, [](auto sum, const auto& pair) {
+            return sum + pair.second;
+        });
+    };
 }
 
 #endif //WAR_AND_PEACE_COUNTER_H
