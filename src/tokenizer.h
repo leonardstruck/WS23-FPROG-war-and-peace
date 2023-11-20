@@ -1,5 +1,5 @@
-#ifndef WAR_AND_PEACE_TOKENIZE_H
-#define WAR_AND_PEACE_TOKENIZE_H
+#ifndef WAR_AND_PEACE_TOKENIZER_H
+#define WAR_AND_PEACE_TOKENIZER_H
 
 #include <iostream>
 #include <range/v3/all.hpp>
@@ -39,6 +39,6 @@ namespace tokenizer {
     };
 }
 
-#endif //WAR_AND_PEACE_TOKENIZE_H
+#endif //WAR_AND_PEACE_TOKENIZER_H
 
 
