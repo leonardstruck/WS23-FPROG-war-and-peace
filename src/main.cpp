@@ -1,10 +1,10 @@
 #include <iostream>
 #include "tokenizer.h"
 #include "readFile.h"
-#include "readAndTokenize.h"
+#include "validator.h"
 
 int main(int argc, char* argv[]) {
-    auto args = readAndTokenize::validateArgs(argc, argv);
+    auto args = validator::validateArgs(argc, argv);
     if (!args.has_value()) {
         // ToDo: Error handling
         return 1;
