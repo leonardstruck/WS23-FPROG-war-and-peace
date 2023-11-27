@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <range/v3/all.hpp>
+
 #include "readFile.h"
 
 namespace validator {
@@ -18,4 +19,5 @@ namespace validator {
   };
 }
 
-#endif //VALIDATOR_H
+#endif // VALIDATOR_H
+

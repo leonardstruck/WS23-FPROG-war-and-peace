@@ -2,6 +2,10 @@
 #include "tokenizer.h"
 #include "readFile.h"
 #include "validator.h"
+#include "chapterizer.h"
+#include "process.h"
+#include "print.h"
+
 
 int main(int argc, char* argv[]) {
     auto args = validator::validateArgs(argc, argv);
@@ -24,6 +28,16 @@ int main(int argc, char* argv[]) {
     auto peaceTerms = tokenizer::tokenize(peaceTermsFile.value()); 
     auto warTerms = tokenizer::tokenize(warTermsFile.value()); 
     auto text = tokenizer::tokenize(textFile.value()); 
+
+    // separate text into chapters by looking for the word "chapter"
+    auto chapters = chapterizer::chapterize(text);
+
+    auto densities = process::process(chapters, warTerms, peaceTerms);
+
+
+    // print result
+    print::printResult(densities, chapters.size());
+
 
     return 0;
 }

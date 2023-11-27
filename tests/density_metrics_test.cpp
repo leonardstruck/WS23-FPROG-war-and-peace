@@ -124,4 +124,11 @@ TEST_CASE("calculate_density") {
         auto result = density_metrics::calculate_density(words, filter);
         CHECK(result == doctest::Approx(0.4)); // Density: occurrences (2) / average distance (5)
     }
+
+    SUBCASE("calculate_density - different filters") {
+        std::vector<std::string> words = {"apple", "banana", "cherry", "grape", "banana", "strawberry"};
+        std::vector<std::string> filter = {"apple", "strawberry"};
+        auto result = density_metrics::calculate_density(words, filter);
+        CHECK(result == doctest::Approx(0.4)); // Density: occurrences (2) / average distance (5)
+    }
 }
