@@ -5,11 +5,10 @@
 #include <vector>
 #include <string>
 #include <range/v3/all.hpp>
-#include "tokenizer.h"
 #include "readFile.h"
 
 namespace validator {
-  auto validateArgs = [](int argc, char* argv[]) -> std::optional<std::vector<std::string>> {
+  auto validateArgs = [](const int argc, const char* argv[]) -> std::optional<std::vector<std::string>> {
     // es müssen genau drei Dateien übergeben werden (book, war terms, peace terms)
     if (argc != 4) {
         return std::nullopt;
@@ -19,4 +18,4 @@ namespace validator {
   };
 }
 
-#endif // VALIDATOR_H
+#endif //VALIDATOR_H
