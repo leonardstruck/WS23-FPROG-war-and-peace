@@ -21,7 +21,7 @@ make
 To run the program, run the following command in the build directory:
 
 ```
-./build/war_and_peace <peace_terms_file> <war_terms_file> <war_and_peace_file>
+./war_and_peace <peace_terms_file> <war_terms_file> <war_and_peace_file>
 ```
 
 ## bash script
