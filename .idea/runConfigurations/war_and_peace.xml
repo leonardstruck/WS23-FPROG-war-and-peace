@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="war_and_peace" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="war_and_peace" TARGET_NAME="war_and_peace" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="war_and_peace" RUN_TARGET_NAME="war_and_peace">
+  <configuration default="false" name="war_and_peace" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="../text/peace_terms.txt ../text/war_terms.txt ../text/war_and_peace.txt" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="war_and_peace" TARGET_NAME="war_and_peace" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="war_and_peace" RUN_TARGET_NAME="war_and_peace">
     <method v="2">
       <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
     </method>
