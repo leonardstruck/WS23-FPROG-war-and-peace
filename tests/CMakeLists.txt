@@ -2,6 +2,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(
     test test_main.cpp
+    process_test.cpp
     tokenizer_test.cpp
     counter_test.cpp
     validator_test.cpp
