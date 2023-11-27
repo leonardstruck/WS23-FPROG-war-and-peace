@@ -7,29 +7,21 @@
 namespace process {
   // calculate for each chapter the density of war and peace terms
 
-  auto process = [](auto&& chapters, auto&& warTerms, auto&& peaceTerms) -> std::vector<std::vector<double>> {
+  auto process_chapter = [](const auto& chapter, const auto& peaceTerms, const auto& warTerms) -> std::pair<double, double> {
+    auto peaceDensity = density_metrics::calculate_density(chapter, peaceTerms);
+    auto warDensity = density_metrics::calculate_density(chapter, warTerms);
+    return {peaceDensity, warDensity};
+  };
 
-    std::vector<double> peaceDensities;
-    std::vector<double> warDensities;
+  auto process = [](auto&& chapters, auto&& warTerms, auto&& peaceTerms) -> std::vector<std::pair<double,double>> {
 
-    //todo make for loop functional
-    // for(auto chapter : chapters) {
-    //   auto peaceDensity = density_metrics::calculate_density(chapter, peaceTerms);
-    //   auto warDensity = density_metrics::calculate_density(chapter, warTerms);
+    auto futures = chapters | ranges::views::transform([&](const auto& chapter) {
+      return std::async(std::launch::async, process_chapter, chapter, peaceTerms, warTerms);
+    }) | ranges::to_vector;
 
-    //   peaceDensities.push_back(peaceDensity);
-    //   warDensities.push_back(warDensity);
-    // }
+    auto results = futures | ranges::views::transform([](auto& future) { return future.get(); }) | ranges::to_vector;
 
-    peaceDensities = chapters | ranges::views::transform([&](auto&& chapter) {
-      return density_metrics::calculate_density(chapter, peaceTerms);
-    }) | ranges::to<std::vector<double>>;
-    warDensities = chapters | ranges::views::transform([&](auto&& chapter) {
-      return density_metrics::calculate_density(chapter, warTerms);
-    }) | ranges::to<std::vector<double>>;
-    
-    auto result = {peaceDensities, warDensities};
-    return result;    
+    return results;
   };
 }
 
