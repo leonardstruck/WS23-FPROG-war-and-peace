@@ -1,6 +1,8 @@
-add_executable(test test_main.cpp
+add_executable(
+    test test_main.cpp
     tokenizer_test.cpp
     counter_test.cpp
+    validator_test.cpp
     filter_test.cpp
         ../src/density_metrics.h
         density_metrics_test.cpp
