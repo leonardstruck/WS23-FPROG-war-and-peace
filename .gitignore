@@ -80,3 +80,8 @@ build
 
 #makefile
 makefile
+
+.idea
+.vscode
+build
+CMakeFiles
